@@ -1,0 +1,57 @@
+{
+  "instance": {
+    "n_sites": 40,
+    "n_fac": 20,
+    "n_dem": 6
+  },
+  "rows": [
+    {
+      "K": 10,
+      "variant": "baseline",
+      "n_vars": 21640,
+      "n_binaries": 2440,
+      "n_constraints": 24480,
+      "wall_s": 300.05603313446045,
+      "objective": 12994369.71391476,
+      "solver_gap": 0.014509930671147678,
+      "best_bound": 12805822.310250595,
+      "gap_reported": 0.014509930671147678
+    },
+    {
+      "K": 10,
+      "variant": "tightened",
+      "n_vars": 21640,
+      "n_binaries": 2440,
+      "n_constraints": 24480,
+      "wall_s": 300.0626001358032,
+      "objective": 13032628.599615276,
+      "solver_gap": 0.019074198724685312,
+      "best_bound": 12784041.651801197,
+      "gap_reported": 0.019074198724685312
+    },
+    {
+      "K": 25,
+      "variant": "baseline",
+      "n_vars": 54040,
+      "n_binaries": 6040,
+      "n_constraints": 61170,
+      "wall_s": 300.1212594509125,
+      "objective": 12926366.021463329,
+      "solver_gap": 0.023906071754881398,
+      "best_bound": 12617347.387824366,
+      "gap_reported": 0.023906071754881398
+    },
+    {
+      "K": 25,
+      "variant": "tightened",
+      "n_vars": 54040,
+      "n_binaries": 6040,
+      "n_constraints": 61170,
+      "wall_s": 300.142795085907,
+      "objective": 12976200.500227466,
+      "solver_gap": 0.02307040065764413,
+      "best_bound": 12676834.355673296,
+      "gap_reported": 0.02307040065764413
+    }
+  ]
+}

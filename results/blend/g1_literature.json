@@ -1,0 +1,181 @@
+{
+  "calibration": {
+    "archetypes": [
+      [
+        "RC frame, post-2000",
+        0.22,
+        0.05
+      ],
+      [
+        "RC frame, 1980-2000",
+        0.32,
+        0.06
+      ],
+      [
+        "brick-concrete, 1980-2000",
+        0.45,
+        0.06
+      ],
+      [
+        "brick-concrete, pre-1980",
+        0.52,
+        0.06
+      ],
+      [
+        "load-bearing masonry, pre-1980",
+        0.58,
+        0.05
+      ]
+    ],
+    "profiles": {
+      "old core": [
+        0.03,
+        0.07,
+        0.15,
+        0.35,
+        0.4
+      ],
+      "inner ring": [
+        0.12,
+        0.18,
+        0.4,
+        0.2,
+        0.1
+      ],
+      "new district": [
+        0.45,
+        0.35,
+        0.15,
+        0.04,
+        0.01
+      ]
+    },
+    "assignment": [
+      "old core",
+      "new district",
+      "inner ring",
+      "inner ring",
+      "new district",
+      "old core",
+      "inner ring",
+      "old core"
+    ],
+    "mean": 0.4378231801536352,
+    "std": 0.10130500220926904
+  },
+  "rows": [
+    {
+      "seed": 11,
+      "temporal_shift": 0.0,
+      "high_price": 52.0,
+      "n": 80,
+      "b_std_mean": 0.09120021681216292,
+      "plan_differs": 0.7,
+      "regret_mean": 0.03575821453520561,
+      "regret_p90": 0.0750551739646695,
+      "regret_max": 0.0786502036160594,
+      "output_loss": 0.6125,
+      "served_high": 0.0,
+      "adv_tech": 1.0,
+      "by_mode": {
+        "resample": {
+          "n": 40,
+          "plan_differs": 0.625,
+          "regret_mean": 0.03513151002193253,
+          "regret_max": 0.0777781374783946
+        },
+        "temporal": {
+          "n": 40,
+          "plan_differs": 0.775,
+          "regret_mean": 0.0363849190484787,
+          "regret_max": 0.0786502036160594
+        }
+      }
+    },
+    {
+      "seed": 11,
+      "temporal_shift": 0.0,
+      "high_price": 70.0,
+      "n": 80,
+      "b_std_mean": 0.09120021681216292,
+      "plan_differs": 0.7,
+      "regret_mean": 0.03575821453506632,
+      "regret_p90": 0.07505517396515499,
+      "regret_max": 0.0786502036160594,
+      "output_loss": 0.6125,
+      "served_high": 0.0,
+      "adv_tech": 1.0,
+      "by_mode": {
+        "resample": {
+          "n": 40,
+          "plan_differs": 0.625,
+          "regret_mean": 0.03513151002153257,
+          "regret_max": 0.07777813746239665
+        },
+        "temporal": {
+          "n": 40,
+          "plan_differs": 0.775,
+          "regret_mean": 0.03638491904860007,
+          "regret_max": 0.0786502036160594
+        }
+      }
+    },
+    {
+      "seed": 11,
+      "temporal_shift": 0.6,
+      "high_price": 52.0,
+      "n": 80,
+      "b_std_mean": 0.08671309121182222,
+      "plan_differs": 0.55,
+      "regret_mean": 0.023270315810101496,
+      "regret_p90": 0.06729748674913166,
+      "regret_max": 0.07859101713224545,
+      "output_loss": 0.425,
+      "served_high": 0.0,
+      "adv_tech": 1.0,
+      "by_mode": {
+        "resample": {
+          "n": 40,
+          "plan_differs": 0.625,
+          "regret_mean": 0.03513151002193253,
+          "regret_max": 0.0777781374783946
+        },
+        "temporal": {
+          "n": 40,
+          "plan_differs": 0.475,
+          "regret_mean": 0.011409121598270467,
+          "regret_max": 0.07859101713224545
+        }
+      }
+    },
+    {
+      "seed": 11,
+      "temporal_shift": 0.6,
+      "high_price": 70.0,
+      "n": 80,
+      "b_std_mean": 0.08671309121182222,
+      "plan_differs": 0.55,
+      "regret_mean": 0.023270315809901524,
+      "regret_p90": 0.06729748674913166,
+      "regret_max": 0.07859101713224545,
+      "output_loss": 0.425,
+      "served_high": 0.0,
+      "adv_tech": 1.0,
+      "by_mode": {
+        "resample": {
+          "n": 40,
+          "plan_differs": 0.625,
+          "regret_mean": 0.03513151002153257,
+          "regret_max": 0.07777813746239665
+        },
+        "temporal": {
+          "n": 40,
+          "plan_differs": 0.475,
+          "regret_mean": 0.011409121598270467,
+          "regret_max": 0.07859101713224545
+        }
+      }
+    }
+  ],
+  "runtime_s": 14.541248559951782
+}

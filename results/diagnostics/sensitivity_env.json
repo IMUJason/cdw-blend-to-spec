@@ -1,0 +1,174 @@
+{
+  "A_param": {
+    "base": {
+      "cost_MCNY": 1597.5306847712407,
+      "utilization": 0.6885000000000001,
+      "landfilled_Mt": 5.754977999426805,
+      "unproc_Mt": 4.741631007647513,
+      "seploss_Mt": 1.0133469917792925,
+      "open": 31
+    },
+    "rho=0.60": {
+      "cost_MCNY": 1613.7463364370008,
+      "utilization": 0.6885,
+      "landfilled_Mt": 5.764107924765469,
+      "unproc_Mt": 4.282810277209516,
+      "seploss_Mt": 1.481297647555952,
+      "open": 31
+    },
+    "rho=0.80": {
+      "cost_MCNY": 1573.178983628756,
+      "utilization": 0.6879634205669567,
+      "landfilled_Mt": 5.727034966844607,
+      "unproc_Mt": 5.113132326694463,
+      "seploss_Mt": 0.6139026401501444,
+      "open": 31
+    },
+    "proc x0.5": {
+      "cost_MCNY": 1395.7768224215495,
+      "utilization": 0.6884690647231401,
+      "landfilled_Mt": 2.8685351299698967,
+      "unproc_Mt": 2.370933049233349,
+      "seploss_Mt": 0.48959016500892527,
+      "open": 34
+    },
+    "proc x2.0": {
+      "cost_MCNY": 1889.6752214911514,
+      "utilization": 0.6881000830211736,
+      "landfilled_Mt": 8.407719695707653,
+      "unproc_Mt": 5.876060816664963,
+      "seploss_Mt": 2.5316588790426895,
+      "open": 29
+    },
+    "price x0.8": {
+      "cost_MCNY": 1757.5800697426052,
+      "utilization": 0.6884999999999999,
+      "landfilled_Mt": 5.767312011498817,
+      "unproc_Mt": 4.615436599144451,
+      "seploss_Mt": 1.1518754123543649,
+      "open": 31
+    },
+    "price x1.2": {
+      "cost_MCNY": 1438.6721533612345,
+      "utilization": 0.6885,
+      "landfilled_Mt": 5.731346495269014,
+      "unproc_Mt": 4.701877202618241,
+      "seploss_Mt": 1.0294692926507722,
+      "open": 31
+    },
+    "sep cost x0.5": {
+      "cost_MCNY": 1559.9329262351466,
+      "utilization": 0.6884999999999999,
+      "landfilled_Mt": 7.020359025286663,
+      "unproc_Mt": 5.1454890073111015,
+      "seploss_Mt": 1.8748700179755615,
+      "open": 30
+    },
+    "sep cost x2.0": {
+      "cost_MCNY": 1634.8123046402195,
+      "utilization": 0.6885,
+      "landfilled_Mt": 4.892715727146343,
+      "unproc_Mt": 4.334486094735493,
+      "seploss_Mt": 0.5582296324108504,
+      "open": 32
+    }
+  },
+  "B_2attr": {
+    "2attr base": {
+      "cost_MCNY": 2946.8143209534737,
+      "utilization": 0.3585204686132219,
+      "landfilled_Mt": 18.937511005429542,
+      "unproc_Mt": 14.817994515779205,
+      "seploss_Mt": 4.119516489650341,
+      "open": 17
+    },
+    "2attr c x0.7": {
+      "cost_MCNY": 2227.4413032585744,
+      "utilization": 0.5920559555529248,
+      "landfilled_Mt": 6.702846328532878,
+      "unproc_Mt": 0.0,
+      "seploss_Mt": 6.702846328532878,
+      "open": 30
+    },
+    "2attr c x1.4": {
+      "cost_MCNY": 3583.4,
+      "utilization": 0.0,
+      "landfilled_Mt": 37.72,
+      "unproc_Mt": 37.72,
+      "seploss_Mt": 0.0,
+      "open": 0
+    }
+  },
+  "C_ghg": {
+    "base": {
+      "net_kt": 65.6911578657451,
+      "kg_per_t_delivered": 2.5294802225681994,
+      "tkm_in_M": 225.05895357298866,
+      "tkm_out_M": 587.2393165252563,
+      "delivered_Mt": 25.970219999999998,
+      "landfilled_Mt": 5.731096965963629,
+      "cost_MCNY": 1597.651982677688,
+      "utilization": 0.6884999999999999
+    },
+    "market 60%": {
+      "net_kt": 105.98230649831342,
+      "kg_per_t_delivered": 5.783521381224335,
+      "tkm_in_M": 106.79210720462808,
+      "tkm_out_M": 378.4566763181527,
+      "delivered_Mt": 18.324875022054062,
+      "landfilled_Mt": 13.669045536936485,
+      "cost_MCNY": 2067.1694655216165,
+      "utilization": 0.4858132296408818
+    },
+    "market 100%": {
+      "net_kt": 50.535723767282306,
+      "kg_per_t_delivered": 1.6692157344053364,
+      "tkm_in_M": 322.29666618415547,
+      "tkm_out_M": 728.8385989106526,
+      "delivered_Mt": 30.27513024569339,
+      "landfilled_Mt": 1.4720375307065117,
+      "cost_MCNY": 1379.649833783779,
+      "utilization": 0.8026280552940983
+    },
+    "charge 60": {
+      "net_kt": 84.63504255589157,
+      "kg_per_t_delivered": 3.266080466044182,
+      "tkm_in_M": 212.77065771718588,
+      "tkm_out_M": 561.239134120653,
+      "delivered_Mt": 25.913336623454356,
+      "landfilled_Mt": 8.927403751717385,
+      "cost_MCNY": 1345.1488243609929,
+      "utilization": 0.6869919571435407
+    },
+    "charge 140": {
+      "net_kt": 49.94152693004313,
+      "kg_per_t_delivered": 1.9230305684758593,
+      "tkm_in_M": 286.16006754778897,
+      "tkm_out_M": 619.7018294886375,
+      "delivered_Mt": 25.97022,
+      "landfilled_Mt": 2.1142039244494764,
+      "cost_MCNY": 1743.3952682132226,
+      "utilization": 0.6885
+    },
+    "std x0.7": {
+      "net_kt": 58.95790399378592,
+      "kg_per_t_delivered": 2.270211957918952,
+      "tkm_in_M": 272.90995375987,
+      "tkm_out_M": 603.6988480998932,
+      "delivered_Mt": 25.97022,
+      "landfilled_Mt": 3.813400804057215,
+      "cost_MCNY": 1657.5840994246184,
+      "utilization": 0.6885
+    },
+    "2attr base": {
+      "net_kt": 183.39137184827462,
+      "kg_per_t_delivered": 13.380367378961619,
+      "tkm_in_M": 330.41485749658375,
+      "tkm_out_M": 425.3344577727045,
+      "delivered_Mt": 13.706004226507767,
+      "landfilled_Mt": 18.68388301873921,
+      "cost_MCNY": 2947.763805058611,
+      "utilization": 0.363361723926505
+    }
+  }
+}

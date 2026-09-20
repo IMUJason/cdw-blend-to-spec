@@ -1,0 +1,283 @@
+{
+  "rows": [
+    {
+      "label": "base",
+      "charge": 95.0,
+      "strictness": 1.0,
+      "sep_cost_mult": 1.0,
+      "market_cover": 0.85,
+      "cost_MCNY": 1599.7881283656345,
+      "utilization": 0.6885,
+      "landfilled_Mt": 5.7549779994268055,
+      "landfill_unprocessed_Mt": 4.693323636283368,
+      "landfill_sep_loss_Mt": 1.0616543631434376,
+      "landfill_rejected_Mt": 0.0,
+      "sep_total_Mt": 5.89807979524132,
+      "sep_by_level_Mt": {
+        "0": 27.128596568475317,
+        "1": 0.0,
+        "2": 0.0,
+        "3": 5.89807979524132
+      },
+      "facilities_open": 31,
+      "adv_tech_lines": 15,
+      "grades_served_Mt": {
+        "0": 2.4733542857142856,
+        "1": 3.9573668571428566,
+        "2": 5.44137942857143,
+        "3": 3.2153605714285707,
+        "4": 4.699373142857143,
+        "5": 6.1833857142857145
+      },
+      "wall_s": 120.27367448806763
+    },
+    {
+      "label": "disposal_charge=60.0",
+      "charge": 60.0,
+      "strictness": 1.0,
+      "sep_cost_mult": 1.0,
+      "market_cover": 0.85,
+      "cost_MCNY": 1346.2253723901028,
+      "utilization": 0.6869919571435407,
+      "landfilled_Mt": 8.927403751717385,
+      "landfill_unprocessed_Mt": 6.205684133429001,
+      "landfill_sep_loss_Mt": 2.721719618288384,
+      "landfill_rejected_Mt": 0.0,
+      "sep_total_Mt": 15.120664546046578,
+      "sep_by_level_Mt": {
+        "0": 16.393651320524416,
+        "1": 0.0,
+        "2": 0.0,
+        "3": 15.120664546046578
+      },
+      "facilities_open": 28,
+      "adv_tech_lines": 0,
+      "grades_served_Mt": {
+        "0": 2.4733542857142856,
+        "1": 3.957366857142857,
+        "2": 5.44137942857143,
+        "3": 3.2153605714285716,
+        "4": 4.699373142857143,
+        "5": 6.126502337740066
+      },
+      "wall_s": 120.31225895881653
+    },
+    {
+      "label": "disposal_charge=140.0",
+      "charge": 140.0,
+      "strictness": 1.0,
+      "sep_cost_mult": 1.0,
+      "market_cover": 0.85,
+      "cost_MCNY": 1743.3952682132226,
+      "utilization": 0.6885,
+      "landfilled_Mt": 2.1142039244494764,
+      "landfill_unprocessed_Mt": 1.5579802575448956,
+      "landfill_sep_loss_Mt": 0.5497573156035693,
+      "landfill_rejected_Mt": 0.006466351301011513,
+      "sep_total_Mt": 3.0542073089087185,
+      "sep_by_level_Mt": {
+        "0": 33.107812433546385,
+        "1": 0.0,
+        "2": 0.0,
+        "3": 3.0542073089087185
+      },
+      "facilities_open": 35,
+      "adv_tech_lines": 33,
+      "grades_served_Mt": {
+        "0": 2.4733542857142856,
+        "1": 3.957366857142858,
+        "2": 5.441379428571429,
+        "3": 3.2153605714285707,
+        "4": 4.6993731428571435,
+        "5": 6.183385714285714
+      },
+      "wall_s": 120.26188683509827
+    },
+    {
+      "label": "grade_standard=0.7",
+      "charge": 95.0,
+      "strictness": 0.7,
+      "sep_cost_mult": 1.0,
+      "market_cover": 0.85,
+      "cost_MCNY": 1657.904713288815,
+      "utilization": 0.6884999999999999,
+      "landfilled_Mt": 3.813400804057214,
+      "landfill_unprocessed_Mt": 2.281189991110036,
+      "landfill_sep_loss_Mt": 1.5322108129471779,
+      "landfill_rejected_Mt": 0.0,
+      "sep_total_Mt": 8.512282294150987,
+      "sep_by_level_Mt": {
+        "0": 26.926527714738977,
+        "1": 0.0,
+        "2": 0.0,
+        "3": 8.512282294150987
+      },
+      "facilities_open": 33,
+      "adv_tech_lines": 25,
+      "grades_served_Mt": {
+        "0": 2.4733542857142856,
+        "1": 3.957366857142857,
+        "2": 5.441379428571429,
+        "3": 3.2153605714285707,
+        "4": 4.699373142857143,
+        "5": 6.183385714285714
+      },
+      "wall_s": 120.34275317192078
+    },
+    {
+      "label": "grade_standard=1.4",
+      "charge": 95.0,
+      "strictness": 1.4,
+      "sep_cost_mult": 1.0,
+      "market_cover": 0.85,
+      "cost_MCNY": 1552.1485437131098,
+      "utilization": 0.6884999999999999,
+      "landfilled_Mt": 5.995325997899696,
+      "landfill_unprocessed_Mt": 5.6700785453017115,
+      "landfill_sep_loss_Mt": 0.32524745259798404,
+      "landfill_rejected_Mt": 0.0,
+      "sep_total_Mt": 1.8069302922110224,
+      "sep_by_level_Mt": {
+        "0": 30.242991162487257,
+        "1": 0.0,
+        "2": 0.0,
+        "3": 1.8069302922110224
+      },
+      "facilities_open": 31,
+      "adv_tech_lines": 14,
+      "grades_served_Mt": {
+        "0": 2.4733542857142856,
+        "1": 3.957366857142856,
+        "2": 5.441379428571429,
+        "3": 3.2153605714285716,
+        "4": 4.699373142857143,
+        "5": 6.183385714285713
+      },
+      "wall_s": 120.26458883285522
+    },
+    {
+      "label": "separation_cost=0.5",
+      "charge": 95.0,
+      "strictness": 1.0,
+      "sep_cost_mult": 0.5,
+      "market_cover": 0.85,
+      "cost_MCNY": 1559.9329262351466,
+      "utilization": 0.6884999999999999,
+      "landfilled_Mt": 7.020359025286663,
+      "landfill_unprocessed_Mt": 5.1454890073111015,
+      "landfill_sep_loss_Mt": 1.8748700179755615,
+      "landfill_rejected_Mt": 0.0,
+      "sep_total_Mt": 10.415944544308676,
+      "sep_by_level_Mt": {
+        "0": 22.158566448380228,
+        "1": 0.0,
+        "2": 0.0,
+        "3": 10.415944544308676
+      },
+      "facilities_open": 30,
+      "adv_tech_lines": 8,
+      "grades_served_Mt": {
+        "0": 2.4733542857142856,
+        "1": 3.957366857142857,
+        "2": 5.441379428571429,
+        "3": 3.2153605714285716,
+        "4": 4.699373142857143,
+        "5": 6.183385714285714
+      },
+      "wall_s": 120.34476399421692
+    },
+    {
+      "label": "separation_cost=2.0",
+      "charge": 95.0,
+      "strictness": 1.0,
+      "sep_cost_mult": 2.0,
+      "market_cover": 0.85,
+      "cost_MCNY": 1634.6887966697193,
+      "utilization": 0.686284830991494,
+      "landfilled_Mt": 4.781145559640331,
+      "landfill_unprocessed_Mt": 4.341572110088861,
+      "landfill_sep_loss_Mt": 0.4395734495514706,
+      "landfill_rejected_Mt": 0.0,
+      "sep_total_Mt": 2.442074719730392,
+      "sep_by_level_Mt": {
+        "0": 30.936353170180755,
+        "1": 0.0,
+        "2": 0.0,
+        "3": 2.442074719730392
+      },
+      "facilities_open": 32,
+      "adv_tech_lines": 20,
+      "grades_served_Mt": {
+        "0": 2.412093045622332,
+        "1": 3.957366857142858,
+        "2": 5.441379428571429,
+        "3": 3.2153605714285716,
+        "4": 4.699373142857143,
+        "5": 6.16109077937682
+      },
+      "wall_s": 120.26417565345764
+    },
+    {
+      "label": "market_cover=0.6",
+      "charge": 95.0,
+      "strictness": 1.0,
+      "sep_cost_mult": 1.0,
+      "market_cover": 0.6,
+      "cost_MCNY": 2067.1694655216165,
+      "utilization": 0.4858132296408818,
+      "landfilled_Mt": 13.669045536936485,
+      "landfill_unprocessed_Mt": 13.215973482382026,
+      "landfill_sep_loss_Mt": 0.45307205455445954,
+      "landfill_rejected_Mt": 0.0,
+      "sep_total_Mt": 2.5170669697469976,
+      "sep_by_level_Mt": {
+        "0": 21.986959547870974,
+        "1": 0.0,
+        "2": 0.0,
+        "3": 2.5170669697469976
+      },
+      "facilities_open": 23,
+      "adv_tech_lines": 18,
+      "grades_served_Mt": {
+        "0": 1.7458971428571428,
+        "1": 2.7934354285714287,
+        "2": 3.840973714285714,
+        "3": 2.269666285714286,
+        "4": 3.317204571428572,
+        "5": 4.35769787919692
+      },
+      "wall_s": 120.2625253200531
+    },
+    {
+      "label": "market_cover=1.0",
+      "charge": 95.0,
+      "strictness": 1.0,
+      "sep_cost_mult": 1.0,
+      "market_cover": 1.0,
+      "cost_MCNY": 1383.555841057584,
+      "utilization": 0.8013171332957332,
+      "landfilled_Mt": 1.4960611382563145,
+      "landfill_unprocessed_Mt": 0.0,
+      "landfill_sep_loss_Mt": 1.4960611382563145,
+      "landfill_rejected_Mt": 0.0,
+      "sep_total_Mt": 8.311450768090637,
+      "sep_by_level_Mt": {
+        "0": 29.408549231909372,
+        "1": 0.0,
+        "2": 0.0,
+        "3": 8.311450768090637
+      },
+      "facilities_open": 36,
+      "adv_tech_lines": 12,
+      "grades_served_Mt": {
+        "0": 2.7747045983548717,
+        "1": 4.655725714285715,
+        "2": 6.401622857142859,
+        "3": 3.7827771428571437,
+        "4": 5.5286742857142865,
+        "5": 7.082177669560181
+      },
+      "wall_s": 120.40713453292847
+    }
+  ]
+}

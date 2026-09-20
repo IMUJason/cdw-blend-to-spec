@@ -1,0 +1,49 @@
+{
+  "A_multicert": {
+    "beijing": {
+      "lines_multi_cert": 20,
+      "lines_multi_ship": 5,
+      "examples": [
+        "((1, 0), [2, 5], [425333.0, 616951.0])",
+        "((14, 1), [1, 2, 4, 5], [292047.0, 512677.0])",
+        "((19, 1), [0, 1, 2, 4, 5], [467144.0, 60295.0])",
+        "((20, 1), [0, 1, 2, 3, 4, 5], [852246.0, 22917.0])",
+        "((33, 1), [2, 3, 4, 5], [32504.0, 714629.0])"
+      ]
+    },
+    "controlled": {
+      "lines_multi_cert": 1,
+      "lines_multi_ship": 1,
+      "examples": [
+        "((0, 0), [1, 2], [10398.0, 443.0])"
+      ]
+    }
+  },
+  "B_prune": {
+    "pairs": 900,
+    "total": 2400,
+    "per_scenario": [
+      100,
+      80,
+      80,
+      80,
+      100,
+      100,
+      100,
+      100,
+      80,
+      80
+    ],
+    "frac": 0.375
+  },
+  "C_bounds": {
+    "lp_base": 10596370.078769384,
+    "lp_prune": 12365370.0665549,
+    "root_indicator=False,prune=False": null,
+    "best_indicator=False,prune=False": 13094791.092651322,
+    "root_indicator=True,prune=False": null,
+    "best_indicator=True,prune=False": 13113692.52079111,
+    "root_indicator=True,prune=True": null,
+    "best_indicator=True,prune=True": 13091675.134157969
+  }
+}

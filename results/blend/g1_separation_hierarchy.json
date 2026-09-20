@@ -1,0 +1,60 @@
+{
+  "instance": {
+    "n_sites": 8,
+    "n_fac": 5,
+    "n_dem": 3
+  },
+  "variants": {
+    "no_separation": {
+      "n": 60,
+      "open_differs_rate": 0.5,
+      "batch_differs_rate": 0.55,
+      "regret_commit_open_mean": 0.023848020704335324,
+      "regret_commit_open_max": 0.07859101713224524,
+      "regret_commit_all_mean": 0.02644149957371257,
+      "regret_commit_all_max": 0.08779457473402169,
+      "sep_tons_commit_open": 0.0,
+      "sep_tons_commit_all": 0.0,
+      "by_mode": {
+        "spatial": {
+          "open_differs_rate": 0.6666666666666666,
+          "regret_commit_open_mean": 0.03758575612835628,
+          "regret_commit_all_mean": 0.037623386387734874,
+          "regret_commit_all_max": 0.07777813744481618
+        },
+        "renewal": {
+          "open_differs_rate": 0.3333333333333333,
+          "regret_commit_open_mean": 0.010110285280314359,
+          "regret_commit_all_mean": 0.01525961275969027,
+          "regret_commit_all_max": 0.08779457473402169
+        }
+      }
+    },
+    "with_separation": {
+      "n": 60,
+      "open_differs_rate": 0.0,
+      "batch_differs_rate": 0.0,
+      "regret_commit_open_mean": -1.5695570229861542e-17,
+      "regret_commit_open_max": 1.8828463129398603e-16,
+      "regret_commit_all_mean": -1.2497697685494212e-17,
+      "regret_commit_all_max": 3.7174047729883984e-16,
+      "sep_tons_commit_open": 16408.62590622861,
+      "sep_tons_commit_all": 16408.625906228608,
+      "by_mode": {
+        "spatial": {
+          "open_differs_rate": 0.0,
+          "regret_commit_open_mean": -3.7093725137755763e-17,
+          "regret_commit_all_mean": -3.0450090753617314e-17,
+          "regret_commit_all_max": 3.7174047729883984e-16
+        },
+        "renewal": {
+          "open_differs_rate": 0.0,
+          "regret_commit_open_mean": 5.70258467803268e-18,
+          "regret_commit_all_mean": 5.4546953826288855e-18,
+          "regret_commit_all_max": 3.608743250437977e-16
+        }
+      }
+    }
+  },
+  "runtime_s": 10.883375883102417
+}

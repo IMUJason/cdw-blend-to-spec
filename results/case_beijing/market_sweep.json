@@ -1,0 +1,112 @@
+{
+  "rows": [
+    {
+      "two_attr": false,
+      "market_cover": 0.6,
+      "cost_MCNY": 2067.1694655216165,
+      "utilization": 0.4858132296408818
+    },
+    {
+      "two_attr": false,
+      "market_cover": 0.65,
+      "cost_MCNY": 1970.455338065132,
+      "utilization": 0.5263730153174747
+    },
+    {
+      "two_attr": false,
+      "market_cover": 0.7,
+      "cost_MCNY": 1869.1347702649518,
+      "utilization": 0.567
+    },
+    {
+      "two_attr": false,
+      "market_cover": 0.75,
+      "cost_MCNY": 1776.902994721268,
+      "utilization": 0.6075000000000002
+    },
+    {
+      "two_attr": false,
+      "market_cover": 0.8,
+      "cost_MCNY": 1689.1104631393846,
+      "utilization": 0.648
+    },
+    {
+      "two_attr": false,
+      "market_cover": 0.85,
+      "cost_MCNY": 1599.7881283656345,
+      "utilization": 0.6885
+    },
+    {
+      "two_attr": false,
+      "market_cover": 0.9,
+      "cost_MCNY": 1516.8398672087455,
+      "utilization": 0.7289984382142902
+    },
+    {
+      "two_attr": false,
+      "market_cover": 0.95,
+      "cost_MCNY": 1438.636009014209,
+      "utilization": 0.7695000000000001
+    },
+    {
+      "two_attr": false,
+      "market_cover": 1.0,
+      "cost_MCNY": 1381.3021206865506,
+      "utilization": 0.8021437529943307
+    },
+    {
+      "two_attr": true,
+      "market_cover": 0.6,
+      "cost_MCNY": 3025.1672014854803,
+      "utilization": 0.3053108011893754
+    },
+    {
+      "two_attr": true,
+      "market_cover": 0.65,
+      "cost_MCNY": 2986.4243989883157,
+      "utilization": 0.32792009246905185
+    },
+    {
+      "two_attr": true,
+      "market_cover": 0.7,
+      "cost_MCNY": 2981.616961400793,
+      "utilization": 0.33490653933633935
+    },
+    {
+      "two_attr": true,
+      "market_cover": 0.75,
+      "cost_MCNY": 2967.0682273517787,
+      "utilization": 0.34155973227614667
+    },
+    {
+      "two_attr": true,
+      "market_cover": 0.8,
+      "cost_MCNY": 2948.692175911411,
+      "utilization": 0.35626974624583474
+    },
+    {
+      "two_attr": true,
+      "market_cover": 0.85,
+      "cost_MCNY": 2950.456392585704,
+      "utilization": 0.3619925243102668
+    },
+    {
+      "two_attr": true,
+      "market_cover": 0.9,
+      "cost_MCNY": 2948.7911869958352,
+      "utilization": 0.37560377052256444
+    },
+    {
+      "two_attr": true,
+      "market_cover": 0.95,
+      "cost_MCNY": 2925.2454367631517,
+      "utilization": 0.38040196561205336
+    },
+    {
+      "two_attr": true,
+      "market_cover": 1.0,
+      "cost_MCNY": 2937.2039865867623,
+      "utilization": 0.38608916054914083
+    }
+  ]
+}

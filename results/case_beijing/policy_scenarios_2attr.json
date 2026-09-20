@@ -1,0 +1,244 @@
+{
+  "rows": [
+    {
+      "label": "base",
+      "charge": 95.0,
+      "strictness": 1.0,
+      "sep_cost_mult": 1.0,
+      "market_cover": 0.85,
+      "two_attr": true,
+      "cost_MCNY": 2947.6756684125066,
+      "utilization": 0.3638684190212356,
+      "landfilled_Mt": 18.657337825720823,
+      "landfill_unprocessed_Mt": 14.472851006976615,
+      "landfill_sep_loss_Mt": 4.184486818744209,
+      "sep_total_Mt": 23247148.993023384,
+      "sep_by_level_Mt": {
+        "0": 0.0,
+        "1": 0.0,
+        "2": 0.0,
+        "3": 23.247148993023384
+      },
+      "facilities_open": 17,
+      "grades_served_Mt": {
+        "0": 0.0,
+        "1": 0.0,
+        "2": 4.926926929595157,
+        "3": 0.0,
+        "4": 2.7078408994100855,
+        "5": 6.090348936475765
+      },
+      "wall_s": 120.36242651939392
+    },
+    {
+      "label": "market_cover=0.60",
+      "charge": 95.0,
+      "strictness": 1.0,
+      "sep_cost_mult": 1.0,
+      "market_cover": 0.6,
+      "two_attr": true,
+      "cost_MCNY": 3025.16720148548,
+      "utilization": 0.3053108011893754,
+      "landfilled_Mt": 21.725106359912164,
+      "landfill_unprocessed_Mt": 18.217937824779092,
+      "landfill_sep_loss_Mt": 3.5071685351330717,
+      "sep_total_Mt": 19484269.639628176,
+      "sep_by_level_Mt": {
+        "0": 0.017792535592733746,
+        "1": 0.0,
+        "2": 0.0,
+        "3": 19.484269639628177
+      },
+      "facilities_open": 15,
+      "grades_served_Mt": {
+        "0": 0.0,
+        "1": 0.0,
+        "2": 3.8409737142857145,
+        "3": 0.0,
+        "4": 3.31060684943467,
+        "5": 4.364742857142856
+      },
+      "wall_s": 120.40351152420044
+    },
+    {
+      "label": "market_cover=1.00",
+      "charge": 95.0,
+      "strictness": 1.0,
+      "sep_cost_mult": 1.0,
+      "market_cover": 1.0,
+      "two_attr": true,
+      "cost_MCNY": 2930.943798547679,
+      "utilization": 0.38484033653431887,
+      "landfilled_Mt": 17.558642369340962,
+      "landfill_unprocessed_Mt": 13.132978499196295,
+      "landfill_sep_loss_Mt": 4.425663870144668,
+      "sep_total_Mt": 24587021.500803713,
+      "sep_by_level_Mt": {
+        "0": 0.0,
+        "1": 0.0,
+        "2": 0.0,
+        "3": 24.58702150080371
+      },
+      "facilities_open": 19,
+      "grades_served_Mt": {
+        "0": 0.0,
+        "1": 0.0,
+        "2": 5.566665273771395,
+        "3": 0.0,
+        "4": 1.70273227799885,
+        "5": 7.246779942304263
+      },
+      "wall_s": 120.35810899734497
+    },
+    {
+      "label": "disposal_charge=60",
+      "charge": 60.0,
+      "strictness": 1.0,
+      "sep_cost_mult": 1.0,
+      "market_cover": 0.85,
+      "two_attr": true,
+      "cost_MCNY": 2193.6011552585683,
+      "utilization": 0.13708848848663188,
+      "landfilled_Mt": 30.538086408728116,
+      "landfill_unprocessed_Mt": 28.96156879113185,
+      "landfill_sep_loss_Mt": 1.5765176175962667,
+      "sep_total_Mt": 8758431.20886815,
+      "sep_by_level_Mt": {
+        "0": 0.0,
+        "1": 0.0,
+        "2": 0.0,
+        "3": 8.75843120886815
+      },
+      "facilities_open": 6,
+      "grades_served_Mt": {
+        "0": 0.0,
+        "1": 0.0,
+        "2": 2.483273169960868,
+        "3": 0.0,
+        "4": 2.6877046157548876,
+        "5": 0.0
+      },
+      "wall_s": 120.43884205818176
+    },
+    {
+      "label": "disposal_charge=140",
+      "charge": 140.0,
+      "strictness": 1.0,
+      "sep_cost_mult": 1.0,
+      "market_cover": 0.85,
+      "two_attr": true,
+      "cost_MCNY": 3795.90792350614,
+      "utilization": 0.36861974368339034,
+      "landfilled_Mt": 18.40842120592016,
+      "landfill_unprocessed_Mt": 14.169294153561172,
+      "landfill_sep_loss_Mt": 4.239127052358989,
+      "sep_total_Mt": 23550705.84643883,
+      "sep_by_level_Mt": {
+        "0": 0.0,
+        "1": 0.0,
+        "2": 0.0,
+        "3": 23.550705846438827
+      },
+      "facilities_open": 18,
+      "grades_served_Mt": {
+        "0": 0.0,
+        "1": 0.0,
+        "2": 5.3990757884890295,
+        "3": 0.0,
+        "4": 2.3218752289627402,
+        "5": 6.183385714285713
+      },
+      "wall_s": 120.35603284835815
+    },
+    {
+      "label": "grade_standard=0.7",
+      "charge": 95.0,
+      "strictness": 0.7,
+      "sep_cost_mult": 1.0,
+      "market_cover": 0.85,
+      "two_attr": true,
+      "cost_MCNY": 2952.6602531060785,
+      "utilization": 0.3686427373180082,
+      "landfilled_Mt": 18.40721659495102,
+      "landfill_unprocessed_Mt": 14.167825115793924,
+      "landfill_sep_loss_Mt": 4.239391479157095,
+      "sep_total_Mt": 23552174.884206083,
+      "sep_by_level_Mt": {
+        "0": 0.0,
+        "1": 0.0,
+        "2": 0.0,
+        "3": 23.55217488420608
+      },
+      "facilities_open": 19,
+      "grades_served_Mt": {
+        "0": 0.0,
+        "1": 0.0,
+        "2": 5.402373761208118,
+        "3": 0.0,
+        "4": 2.3194445761414366,
+        "5": 6.1833857142857145
+      },
+      "wall_s": 120.42194819450378
+    },
+    {
+      "label": "grade_standard=1.4",
+      "charge": 95.0,
+      "strictness": 1.4,
+      "sep_cost_mult": 1.0,
+      "market_cover": 0.85,
+      "two_attr": true,
+      "cost_MCNY": 2953.2988892878525,
+      "utilization": 0.357744883672818,
+      "landfilled_Mt": 18.978143038696256,
+      "landfill_unprocessed_Mt": 14.868748867827442,
+      "landfill_sep_loss_Mt": 4.109394170868815,
+      "sep_total_Mt": 22829967.615937863,
+      "sep_by_level_Mt": {
+        "0": 0.021283516234693503,
+        "1": 0.0,
+        "2": 0.0,
+        "3": 22.829967615937864
+      },
+      "facilities_open": 17,
+      "grades_served_Mt": {
+        "0": 0.0,
+        "1": 0.0,
+        "2": 4.974500396517919,
+        "3": 0.0,
+        "4": 2.3362509013350614,
+        "5": 6.1833857142857145
+      },
+      "wall_s": 120.34133529663086
+    },
+    {
+      "label": "separation_cost=2.0",
+      "charge": 95.0,
+      "strictness": 1.0,
+      "sep_cost_mult": 2.0,
+      "market_cover": 0.85,
+      "two_attr": true,
+      "cost_MCNY": 3178.4786878450036,
+      "utilization": 0.3557079692488426,
+      "landfilled_Mt": 19.084854722130075,
+      "landfill_unprocessed_Mt": 14.999171148575588,
+      "landfill_sep_loss_Mt": 4.08568357355449,
+      "sep_total_Mt": 22698242.07530272,
+      "sep_by_level_Mt": {
+        "0": 0.02258677612168738,
+        "1": 0.0,
+        "2": 0.0,
+        "3": 22.69824207530272
+      },
+      "facilities_open": 17,
+      "grades_served_Mt": {
+        "0": 0.0,
+        "1": 0.0,
+        "2": 5.4413794285714285,
+        "3": 0.0,
+        "4": 1.7925394572092026,
+        "5": 6.183385714285713
+      },
+      "wall_s": 120.42107009887695
+    }
+  ]
+}
