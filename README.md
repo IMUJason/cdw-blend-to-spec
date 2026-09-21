@@ -52,6 +52,7 @@ python -m scripts.run_market_sweep              # frontier figure data
 python -m scripts.run_diagnostics               # batch multiplicity,
                                                 # pruning counts, root bounds
 python -m scripts.run_parameter_robustness      # parameter robustness + GHG
+python -m scripts.run_saa_diagnostics           # VSS + out-of-sample
 ```
 
 All randomness is seed-controlled; runners overwrite the JSON in `results/`.
@@ -72,6 +73,7 @@ the paper (objectives within ~0.1%, utilization within ~0.1 pp).
 | Frontier figure data | run_market_sweep | results/case_beijing/market_sweep.json |
 | Batch multiplicity, pruning counts, root bounds | run_diagnostics | results/diagnostics/checks.json |
 | Parameter robustness, GHG | run_parameter_robustness | results/diagnostics/sensitivity_env.json |
+| SAA diagnostics (VSS, out-of-sample) | run_saa_diagnostics | results/diagnostics/saa_diagnostics.json |
 
 The case is semi-synthetic; every calibration choice and its provenance are
 documented in the paper's supplementary material.
