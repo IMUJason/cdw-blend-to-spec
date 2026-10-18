@@ -1,4 +1,4 @@
-"""Reviewer-driven checks: batch-exclusivity diagnostic, reachability-pruning
+"""Model and formulation diagnostics: batch multiplicity, reachability-pruning
 counts, and root-bound comparison of big-M vs indicator formulations of the
 certification implication.
 
@@ -23,7 +23,7 @@ from src.models.blend_net import (BlendNetworkSep, BlendNetworkTwoStage,
                                   build_gate_instance, literature_composition)
 from src.models.case_beijing import build_beijing_case
 
-OUT = Path("results") / "reviewer"
+OUT = Path("results") / "diagnostics"
 BEST_KNOWN = 12994369.71391476   # best incumbent, K=10 baseline 300 s solve
 
 

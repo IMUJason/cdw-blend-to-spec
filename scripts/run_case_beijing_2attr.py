@@ -2,8 +2,8 @@
 
 The second attribute (soil/clay and non-mineral impurities) is capped by the
 class limits of GB/T 25177-2010, which are far tighter than the attribute's
-share in raw demolition debris. This run answers the question a reviewer will
-ask: do the policy conclusions survive when the standard is enforced literally?
+share in raw demolition debris. This run tests whether the policy conclusions
+survive when the standard is enforced literally.
 """
 import json
 import time

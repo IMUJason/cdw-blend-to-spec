@@ -1,4 +1,4 @@
-"""Reviewer-driven sensitivity and environmental accounting on the Beijing case.
+"""Parameter robustness and environmental accounting on the Beijing case.
 
 Part A: parameter robustness of the single-attribute base case
   (removal efficiency rho of advanced sorting, processing cost, grade prices)
@@ -20,7 +20,7 @@ import numpy as np
 from src.models.case_beijing import build_beijing_case
 from src.models.blend_net import BlendNetworkSep, DEFAULT_SEPARATION
 
-OUT = Path("results") / "reviewer"
+OUT = Path("results") / "diagnostics"
 
 
 def solve_beijing(charge=95.0, strictness=1.0, sep_cost_mult=1.0,

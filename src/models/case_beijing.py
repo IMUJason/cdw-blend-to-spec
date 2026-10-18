@@ -1,5 +1,5 @@
 """Beijing CDW recycling case: semi-synthetic instance calibrated to public
-statistics (see docs/案例标定说明.md for sources and assumptions).
+statistics; sources and assumptions are documented in the paper's supplementary material.
 
 Real anchors
     total CDW generation 37.72 Mt (Beijing, 2019); downtown 8.99 Mt vs
