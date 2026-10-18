@@ -1,5 +1,5 @@
 """Beijing CDW recycling case: semi-synthetic instance calibrated to public
-statistics; sources and assumptions are documented in the paper's supplementary material.
+statistics (see docs/案例标定说明.md for sources and assumptions).
 
 Real anchors
     total CDW generation 37.72 Mt (Beijing, 2019); downtown 8.99 Mt vs
@@ -11,7 +11,7 @@ Real anchors
     disposal-charge anchor 95 CNY/t (landfill-fee study); general construction
         waste management fee 23.61 CNY/t (Wang et al. 2019, JCP)
 
-Synthesized (explicitly flagged in the paper's supplementary material)
+Synthesized (explicitly flagged in the paper appendix)
     per-district shares inside the downtown / suburban groups (allocated with a
     documented proxy), facility coordinates for synthesized candidates,
     technology / separation cost parameters, recycled-aggregate prices,
@@ -142,9 +142,10 @@ def build_beijing_case(seed: int = 2024, n_dem: int = 6,
                for d in range(n_dem)]
 
     techs = [
+        # rho*b <= 1-eta for b up to 0.85 (see blend_net.build_gate_instance)
         {"id": 0, "label": "simple crushing", "yield": 0.90, "rho": 0.00,
          "proc_cost": 8.0, "fixed_mult": 1.00},
-        {"id": 1, "label": "advanced sorting", "yield": 0.72, "rho": 0.70,
+        {"id": 1, "label": "advanced sorting", "yield": 0.55, "rho": 0.52,
          "proc_cost": 14.0, "fixed_mult": 1.25},
     ]
 

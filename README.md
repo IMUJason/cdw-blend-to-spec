@@ -10,7 +10,9 @@ separation".
 ```
 src/models/blend_net.py      model family: single-period, two-stage SAA /
                              chance-constrained, and source-separation MILPs
-                             (docplex; optional indicator-constraint variant)
+                             (docplex; product-basis certification, full mass
+                             accounting with processing residue; optional
+                             indicator-constraint variant)
 src/models/case_beijing.py   Beijing case instance, calibrated to public
                              statistics (16 districts, 40 candidates, 6 grades)
 scripts/                     one runner per result block (see mapping below)
@@ -53,6 +55,9 @@ python -m scripts.run_diagnostics               # batch multiplicity,
                                                 # pruning counts, root bounds
 python -m scripts.run_parameter_robustness      # parameter robustness + GHG
 python -m scripts.run_saa_diagnostics           # VSS + out-of-sample
+python -m scripts.audit_physics                 # physics audit (run first)
+python -m scripts.run_g1_boundary_v2            # heterogeneity boundary
+python -m scripts.run_2attr_controlled          # two-attribute boundary
 ```
 
 All randomness is seed-controlled; runners overwrite the JSON in `results/`.
@@ -74,6 +79,9 @@ the paper (objectives within ~0.1%, utilization within ~0.1 pp).
 | Batch multiplicity, pruning counts, root bounds | run_diagnostics | results/diagnostics/checks.json |
 | Parameter robustness, GHG | run_parameter_robustness | results/diagnostics/sensitivity_env.json |
 | SAA diagnostics (VSS, out-of-sample) | run_saa_diagnostics | results/diagnostics/saa_diagnostics.json |
+| Physics audit (mass balance, parameter domains) | audit_physics | exit code |
+| Heterogeneity boundary (fine grid, continuous metrics) | run_g1_boundary_v2 | results/blend/g1_boundary_v2.json |
+| Two-attribute feasibility boundary | run_2attr_controlled | results/blend/twoattr_controlled.json |
 
 The case is semi-synthetic; every calibration choice and its provenance are
 documented in the paper's supplementary material.

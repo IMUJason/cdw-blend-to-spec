@@ -1,4 +1,4 @@
-"""SAA statistical diagnostics on the city-scale instance.
+"""SAA statistical diagnostics on the city-scale instance (reviewer round 2).
 
 Reports, for the two-stage blend-to-specification model:
   RP*    expected cost of the SAA first-stage portfolio y*, evaluated

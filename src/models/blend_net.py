@@ -50,17 +50,18 @@ except ImportError:  # pragma: no cover
 # --------------------------------------------------------------------------
 
 DEFAULT_SEPARATION = [
-    # (sigma, lam, cost_per_raw_ton)
-    #  sigma = fraction of brick/masonry MASS removed
-    #  lam   = fraction of TOTAL mass lost to the removed (contaminant) stream
-    #  level 0 (no separation) is always included
-    (0.35, 0.18, 6.0),    # screening: removes coarse masonry, modest mass loss
-    (0.70, 0.35, 14.0),   # advanced source separation: aggressive but lossy
-    (0.85, 0.18, 10.0),   # selective deconstruction: high brick removal and
-                          # LOW mass loss (masonry is collected separately,
-                          # not discarded); cost reflects the published
-                          # 17-25% premium of deconstruction over
-                          # mechanical demolition on the demolition contract
+    # (sigma, gamma, cost_per_raw_ton)
+    #  sigma = fraction of brick/masonry MASS removed from the brick stream
+    #  gamma = fraction of non-brick MASS removed (fines/soil carry-over)
+    #  mass lost on site s at level l: lam(s,l) = sigma*b_s + gamma*(1-b_s),
+    #  which enforces the physical bound sigma*b_s <= lam(s,l) by construction.
+    #  level 0 (no separation) is always included.
+    (0.35, 0.05, 6.0),     # screening: removes coarse masonry, light fines loss
+    (0.70, 0.08, 14.0),    # advanced source separation: aggressive brick removal
+    (0.85, 0.12, 26.0),    # selective deconstruction: near-complete brick
+                           # removal; cost reflects the published 17-25%
+                           # premium of deconstruction over mechanical
+                           # demolition on the demolition contract
 ]
 
 
@@ -163,7 +164,7 @@ def build_gate_instance(n_sites: int = 8, n_fac: int = 5, seed: int = 11,
     n_attr=2 additionally supplies `c_base`, the per-site share of soil/clay and
     non-mineral impurities, so the second compliance attribute of the product
     standard can be imposed; its grade caps follow the clay-lump and impurity
-    limits of GB/T 25177-2010, derived in the paper.
+    limits of GB/T 25177-2010 (see the paper's appendix for the derivation).
     """
     rng = np.random.default_rng(seed)
     coords_s = rng.uniform(0, 100, size=(n_sites, 2))
@@ -196,9 +197,12 @@ def build_gate_instance(n_sites: int = 8, n_fac: int = 5, seed: int = 11,
     } for f in range(n_fac)]
 
     techs = [
+        # yield eta and brick removal rho must satisfy rho*b <= 1-eta for the
+        # feed domain (b up to 0.85): 0.52*0.85 = 0.442 <= 0.45. The residue
+        # stream (1-eta)*I carries the removed brick rho*B to disposal.
         {"id": 0, "label": "simple crushing", "yield": 0.90, "rho": 0.00,
          "proc_cost": 8.0, "fixed_mult": 1.00},
-        {"id": 1, "label": "advanced sorting", "yield": 0.72, "rho": 0.70,
+        {"id": 1, "label": "advanced sorting", "yield": 0.55, "rho": 0.52,
          "proc_cost": 14.0, "fixed_mult": 1.25},
     ]
 
@@ -287,23 +291,29 @@ class BlendNetworkModel:
                 obj += (I["facilities"][f]["fixed_cost"]
                         * I["techs"][t]["fixed_mult"] * y[f, t])
                 inp = m.sum(a[s, f, t] for s in range(S))
+                eta_t = I["techs"][t]["yield"]
                 m.add_constraint(inp <= cap_f * y[f, t], ctname=f"cap_{f}_{t}")
-                out = I["techs"][t]["yield"] * inp
+                out = eta_t * inp
                 m.add_constraint(out == m.sum(p[f, t, d] for d in range(D))
                                  + r[f, t], ctname=f"out_{f}_{t}")
+                # processing residue (1-eta)*I goes to disposal, carrying the
+                # brick mass rho*B removed by the technology
+                obj += I["landfill_fee"] * (1.0 - eta_t) * inp
                 brick_in = m.sum(self.b[s] * a[s, f, t] for s in range(S))
                 rho_t = I["techs"][t]["rho"]
                 for d in range(D):
                     ship_ub = min(I["demands"][d]["quantity"],
-                                  I["techs"][t]["yield"] * cap_f)
+                                  eta_t * cap_f)
                     m.add_constraint(p[f, t, d] <= ship_ub * w[f, t, d],
                                      ctname=f"ship_{f}_{t}_{d}")
                     m.add_constraint(w[f, t, d] <= y[f, t],
                                      ctname=f"batch_open_{f}_{t}_{d}")
                     if self.enforce_spec:
+                        # kappa caps the brick share of the PRODUCT stream
+                        # eta*I, not of the raw input
                         m.add_constraint(
                             (1 - rho_t) * brick_in
-                            <= I["demands"][d]["kappa"] * inp
+                            <= I["demands"][d]["kappa"] * eta_t * inp
                             + cap_f * (1 - w[f, t, d]),
                             ctname=f"grade_{f}_{t}_{d}")
                         if self.c is not None:
@@ -312,7 +322,7 @@ class BlendNetworkModel:
                             m.add_constraint(
                                 (1 - rho_t) * m.sum(self.c[s] * a[s, f, t]
                                                     for s in range(S))
-                                <= I["demands"][d]["kappa2"] * inp
+                                <= I["demands"][d]["kappa2"] * eta_t * inp
                                 + cap_f * (1 - w[f, t, d]),
                                 ctname=f"grade2_{f}_{t}_{d}")
                     obj += (I["t_fd"][f, d]
@@ -364,8 +374,9 @@ class BlendNetworkModel:
                    for t in range(I["n_tech"])))}
         for f in range(I["n_fac"]):
             for t in range(I["n_tech"]):
-                out["input_ft"][(f, t)] = float(
+                inp_ft = float(
                     sum(g(self.a[s, f, t]) for s in range(I["n_sites"])))
+                out["input_ft"][(f, t)] = inp_ft
                 out["brick_in_ft"][(f, t)] = float(sum(
                     self.b[s] * g(self.a[s, f, t])
                     for s in range(I["n_sites"])))
@@ -373,6 +384,16 @@ class BlendNetworkModel:
             out["product_d"][d] = float(sum(g(self.p[f, t, d])
                                             for f in range(I["n_fac"])
                                             for t in range(I["n_tech"])))
+        # processing residue is landfilled alongside rejected product
+        out["residue"] = float(sum(
+            (1.0 - I["techs"][t]["yield"]) * out["input_ft"][(f, t)]
+            for f in range(I["n_fac"]) for t in range(I["n_tech"])))
+        out["total_landfilled"] = (out["landfilled_waste"]
+                                   + out["landfilled_product"]
+                                   + out["residue"])
+        out["utilization_rate"] = (sum(out["product_d"].values())
+                                   / float(sum(I["Q"]))
+                                   if sum(I["Q"]) else 0.0)
         return out
 
 
@@ -506,10 +527,13 @@ class BlendNetworkTwoStage:
                     inp = m.sum(a[s, f, t] for s in range(S))
                     m.add_constraint(inp <= cap_f * y[f, t],
                                      ctname=f"cap_{k}_{f}_{t}")
-                    out = I["techs"][t]["yield"] * inp
+                    eta_t = I["techs"][t]["yield"]
+                    out = eta_t * inp
                     m.add_constraint(out == m.sum(p[f, t, d]
                                                   for d in range(D)) + r[f, t],
                                      ctname=f"out_{k}_{f}_{t}")
+                    # residue (1-eta)*I to disposal
+                    rec += I["landfill_fee"] * (1.0 - eta_t) * inp
                     brick_in = m.sum(b[s] * a[s, f, t] for s in range(S))
                     contam_in = (None if c_k is None
                                  else m.sum(c_k[s] * a[s, f, t]
@@ -518,16 +542,16 @@ class BlendNetworkTwoStage:
                     for d in range(D):
                         kappa_d = I["demands"][d]["kappa"]
                         ship_ub = min(I["demands"][d]["quantity"],
-                                      I["techs"][t]["yield"] * cap_f)
+                                      eta_t * cap_f)
                         m.add_constraint(p[f, t, d] <= ship_ub * w[f, t, d],
                                          ctname=f"ship_{k}_{f}_{t}_{d}")
                         m.add_constraint(w[f, t, d] <= y[f, t],
                                          ctname=f"batch_open_{k}_{f}_{t}_{d}")
                         if (self.prune_batches
-                                and ((1 - rho_t) * b_min_k > kappa_d
+                                and ((1 - rho_t) * b_min_k > kappa_d * eta_t
                                      or (self.comp2 is not None
                                          and (1 - rho_t) * c_min_k
-                                         > I["demands"][d]["kappa2"]))):
+                                         > I["demands"][d]["kappa2"] * eta_t))):
                             m.add_constraint(w[f, t, d] == 0,
                                              ctname=f"prune_{k}_{f}_{t}_{d}")
                             continue
@@ -536,26 +560,28 @@ class BlendNetworkTwoStage:
                         if self.indicator:
                             m.add_indicator(
                                 w[f, t, d],
-                                (1 - rho_t) * brick_in <= kappa_d * inp,
+                                (1 - rho_t) * brick_in
+                                <= kappa_d * eta_t * inp,
                                 active_value=1,
                                 name=f"grade_{k}_{f}_{t}_{d}")
                         else:
                             m.add_constraint(
                                 (1 - rho_t) * brick_in
-                                <= kappa_d * inp + big_m * (1 - w[f, t, d]),
+                                <= kappa_d * eta_t * inp
+                                + big_m * (1 - w[f, t, d]),
                                 ctname=f"grade_{k}_{f}_{t}_{d}")
                         if self.comp2 is not None:
                             if self.indicator:
                                 m.add_indicator(
                                     w[f, t, d],
                                     (1 - rho_t) * contam_in
-                                    <= I["demands"][d]["kappa2"] * inp,
+                                    <= I["demands"][d]["kappa2"] * eta_t * inp,
                                     active_value=1,
                                     name=f"grade2_{k}_{f}_{t}_{d}")
                             else:
                                 m.add_constraint(
                                     (1 - rho_t) * contam_in
-                                    <= I["demands"][d]["kappa2"] * inp
+                                    <= I["demands"][d]["kappa2"] * eta_t * inp
                                     + big_m * (1 - w[f, t, d]),
                                     ctname=f"grade2_{k}_{f}_{t}_{d}")
                         rec += (I["t_fd"][f, d]
@@ -643,6 +669,20 @@ class BlendNetworkSep:
         # efficiency as masonry, which is what screening and sorting do.
         self.c = None if contam_share is None else np.asarray(contam_share,
                                                               dtype=float)
+        # per-(site, level) mass coefficients under (sigma, gamma) separation:
+        # kept mass w = (1-sig)*b + (1-gam)*(1-b), kept brick = b*(1-sig),
+        # lost mass = sig*b + gam*(1-b) >= sig*b by construction (physical
+        # feasibility of the contaminant stream).
+        S = inst["n_sites"]
+        self.w_coef = [[(1 - sig) * self.b[s] + (1 - gam) * (1 - self.b[s])
+                        for (sig, gam, _c) in self.levels] for s in range(S)]
+        self.brick_keep = [[self.b[s] * (1 - sig)
+                            for (sig, _g, _c) in self.levels]
+                           for s in range(S)]
+        self.contam_keep = (None if self.c is None else
+                            [[self.c[s] * (1 - sig)
+                              for (sig, _g, _c) in self.levels]
+                             for s in range(S)])
         self._build()
 
     def _build(self):
@@ -670,38 +710,43 @@ class BlendNetworkSep:
             cap = I["facilities"][f]["capacity"]
             for t in range(T):
                 rho_t = I["techs"][t]["rho"]
+                eta_t = I["techs"][t]["yield"]
                 obj += (I["facilities"][f]["fixed_cost"]
                         * I["techs"][t]["fixed_mult"] * y[f, t])
-                delivered = m.sum((1 - self.levels[l][1]) * a[s, f, t, l]
+                raw_in = m.sum(a[s, f, t, l]
+                               for s in range(S) for l in range(L))
+                delivered = m.sum(self.w_coef[s][l] * a[s, f, t, l]
                                   for s in range(S) for l in range(L))
-                brick_in = m.sum(self.b[s] * (1 - self.levels[l][0])
-                                 * a[s, f, t, l]
+                brick_in = m.sum(self.brick_keep[s][l] * a[s, f, t, l]
                                  for s in range(S) for l in range(L))
-                m.add_constraint(delivered <= cap * y[f, t],
+                # nameplate capacity is on RAW feed
+                m.add_constraint(raw_in <= cap * y[f, t],
                                  ctname=f"cap_{f}_{t}")
-                out = I["techs"][t]["yield"] * delivered
+                out = eta_t * delivered
                 m.add_constraint(out == m.sum(p[f, t, d] for d in range(D))
                                  + r[f, t], ctname=f"out_{f}_{t}")
+                # processing residue (1-eta)*delivered to disposal
+                obj += I["landfill_fee"] * (1.0 - eta_t) * delivered
                 for d in range(D):
-                    ship_ub = min(I["demands"][d]["quantity"],
-                                  I["techs"][t]["yield"] * cap)
+                    ship_ub = min(I["demands"][d]["quantity"], eta_t * cap)
                     m.add_constraint(p[f, t, d] <= ship_ub * w[f, t, d],
                                      ctname=f"ship_{f}_{t}_{d}")
                     m.add_constraint(w[f, t, d] <= y[f, t],
                                      ctname=f"batch_open_{f}_{t}_{d}")
                     if self.enforce_spec:
+                        # kappa caps the brick share of the PRODUCT stream
                         m.add_constraint(
                             (1 - rho_t) * brick_in
-                            <= I["demands"][d]["kappa"] * delivered
+                            <= I["demands"][d]["kappa"] * eta_t * delivered
                             + cap * (1 - w[f, t, d]),
                             ctname=f"grade_{f}_{t}_{d}")
                         if self.c is not None:
                             m.add_constraint(
                                 (1 - rho_t) * m.sum(
-                                    self.c[s] * (1 - self.levels[l][0])
-                                    * a[s, f, t, l]
+                                    self.contam_keep[s][l] * a[s, f, t, l]
                                     for s in range(S) for l in range(L))
-                                <= I["demands"][d]["kappa2"] * delivered
+                                <= I["demands"][d]["kappa2"] * eta_t
+                                * delivered
                                 + cap * (1 - w[f, t, d]),
                                 ctname=f"grade2_{f}_{t}_{d}")
                     obj += (I["t_fd"][f, d]
@@ -709,11 +754,12 @@ class BlendNetworkSep:
                 obj += I["landfill_fee"] * r[f, t]
                 for s in range(S):
                     for l in range(L):
-                        sig, lam, cst = self.levels[l]
-                        obj += (I["t_sf"][s, f] * (1 - lam)
-                                + I["techs"][t]["proc_cost"] * (1 - lam)
+                        _sig, _gam, cst = self.levels[l]
+                        wsl = self.w_coef[s][l]
+                        obj += (I["t_sf"][s, f] * wsl
+                                + I["techs"][t]["proc_cost"] * wsl
                                 + cst) * a[s, f, t, l]
-                        obj += I["landfill_fee"] * lam * a[s, f, t, l]
+                        obj += I["landfill_fee"] * (1.0 - wsl) * a[s, f, t, l]
                         m.add_constraint(a[s, f, t, l] <= I["Q"][s] * y[f, t],
                                          ctname=f"src_{s}_{f}_{t}_{l}")
 
@@ -758,33 +804,51 @@ class BlendNetworkSep:
             out["product_d"][d] = float(sum(g(self.p[f, t, d])
                                             for f in range(I["n_fac"])
                                             for t in range(I["n_tech"])))
+        raw_total = 0.0
         for f in range(I["n_fac"]):
             for t in range(I["n_tech"]):
-                delivered = sum((1 - self.levels[l][1]) * g(self.a[s, f, t, l])
+                delivered = sum(self.w_coef[s][l] * g(self.a[s, f, t, l])
                                 for s in range(I["n_sites"])
                                 for l in range(len(self.levels)))
-                brick = sum(self.b[s] * (1 - self.levels[l][0])
-                            * g(self.a[s, f, t, l])
+                brick = sum(self.brick_keep[s][l] * g(self.a[s, f, t, l])
                             for s in range(I["n_sites"])
                             for l in range(len(self.levels)))
+                raw_total += sum(g(self.a[s, f, t, l])
+                                 for s in range(I["n_sites"])
+                                 for l in range(len(self.levels)))
                 out["input_ft"][(f, t)] = float(delivered)
                 out["brick_in_ft"][(f, t)] = float(brick)
-        for l, (sig, lam, cst) in enumerate(self.levels):
+        for l, (_sig, _gam, _cst) in enumerate(self.levels):
             out["sep_tonnage"][l] = float(sum(g(self.a[s, f, t, l])
                                               for s in range(I["n_sites"])
                                               for f in range(I["n_fac"])
                                               for t in range(I["n_tech"])))
-        # mass accounting: the contaminant stream removed by separation is
-        # landfilled too, so it must be counted or utilization is overstated
+        # full mass accounting: separation loss, processing residue and
+        # rejected product are all landfilled; anything not delivered must
+        # land in one of these streams (audited to close on Q).
         delivered = float(sum(out["product_d"].values()))
-        sep_loss = float(sum(lam * out["sep_tonnage"][l]
-                             for l, (_s, lam, _c) in enumerate(self.levels)))
+        sep_loss = float(sum((1.0 - self.w_coef[s][l])
+                             * g(self.a[s, f, t, l])
+                             for s in range(I["n_sites"])
+                             for f in range(I["n_fac"])
+                             for t in range(I["n_tech"])
+                             for l in range(len(self.levels))))
+        residue = float(sum(
+            (1.0 - I["techs"][t]["yield"]) * out["input_ft"][(f, t)]
+            for f in range(I["n_fac"]) for t in range(I["n_tech"])))
         rejected = float(sum(g(self.r[f, t]) for f in range(I["n_fac"])
                              for t in range(I["n_tech"])))
         total_waste = float(sum(I["Q"]))
         out["sep_loss"] = sep_loss
+        out["residue"] = residue
+        out["raw_processed"] = raw_total
         out["rejected_product"] = rejected
-        out["total_landfilled"] = out["landfilled_waste"] + sep_loss + rejected
+        out["total_landfilled"] = (out["landfilled_waste"] + sep_loss
+                                   + residue + rejected)
         out["utilization_rate"] = (delivered / total_waste
                                    if total_waste else 0.0)
+        # mass balance closure check (informative; solver tolerance ~1e-6)
+        balance = (delivered + rejected + residue + sep_loss
+                   + out["landfilled_waste"])
+        out["mass_balance_gap"] = balance - total_waste
         return out
